@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a wire:navigate href="#" class="brand-link">
         <img src="{{ asset('AdminLTE-3.2.0/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
         <span class="brand-text font-weight-light">E-Warehouse</span>
@@ -18,7 +18,7 @@
                with font-awesome or any other icon font library -->
                 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a wire:navigate href="#" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Dashboard
@@ -29,7 +29,7 @@
                 <li class="nav-header">SUPER ADMIN</li>
 
                 <li class="nav-item">
-                    <a href="{{ route('superadmin.users.index') }}" class="nav-link @yield('menu-superadmin-users')">
+                    <a wire:navigate href="{{ route('superadmin.users.index') }}" class="nav-link @yield('menu-superadmin-users')">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Users
@@ -38,7 +38,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('superadmin.categories.index') }}" class="nav-link @yield('menu-superadmin-categories')">
+                    <a wire:navigate href="{{ route('superadmin.categories.index') }}" class="nav-link @yield('menu-superadmin-categories')">
                         <i class="nav-icon fas fa-list"></i>
                         <p>
                             Categories
@@ -47,7 +47,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('superadmin.stocks.index') }}" class="nav-link @yield('menu-superadmin-stocks')">
+                    <a wire:navigate href="{{ route('superadmin.stocks.index') }}" class="nav-link @yield('menu-superadmin-stocks')">
                         <i class="nav-icon fas fa-warehouse"></i>
                         <p>
                             Stocks
@@ -58,7 +58,7 @@
                 <li class="nav-header">ADMIN</li>
 
                 <li class="nav-item">
-                    <a href="{{ route('admin.stocks.index') }}" class="nav-link @yield('menu-admin-stocks')">
+                    <a wire:navigate href="{{ route('admin.stocks.index') }}" class="nav-link @yield('menu-admin-stocks')">
                         <i class="nav-icon fas fa-warehouse"></i>
                         <p>
                             Stocks
