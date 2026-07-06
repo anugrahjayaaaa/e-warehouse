@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 {{-- set title --}}
-@section('title', 'User Data')
+@section('title', 'Users Data')
 
 {{-- set menu --}}
 @section('menu-superadmin-users', 'active')
