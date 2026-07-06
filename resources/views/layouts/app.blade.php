@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -8,6 +8,8 @@
 
     {{-- style --}}
     @include('layouts.style')
+
+    @livewireStyles
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -29,6 +31,8 @@
 
     {{-- script --}}
     @include('layouts.script')
+
+    @livewireScripts
 </body>
 
 </html>
