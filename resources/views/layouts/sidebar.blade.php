@@ -29,7 +29,7 @@
                 <li class="nav-header">SUPER ADMIN</li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link @yield('menu-superadmin-users')">
+                    <a href="{{ route('superadmin.users.index') }}" class="nav-link @yield('menu-superadmin-users')">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Users
@@ -38,7 +38,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link @yield('menu-superadmin-categories')">
+                    <a href="{{ route('superadmin.categories.index') }}" class="nav-link @yield('menu-superadmin-categories')">
                         <i class="nav-icon fas fa-list"></i>
                         <p>
                             Categories
@@ -47,7 +47,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link @yield('menu-superadmin-stocks')">
+                    <a href="{{ route('superadmin.stocks.index') }}" class="nav-link @yield('menu-superadmin-stocks')">
                         <i class="nav-icon fas fa-warehouse"></i>
                         <p>
                             Stocks
@@ -58,7 +58,7 @@
                 <li class="nav-header">ADMIN</li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link @yield('menu-admin-stocks')">
+                    <a href="{{ route('admin.stocks.index') }}" class="nav-link @yield('menu-admin-stocks')">
                         <i class="nav-icon fas fa-warehouse"></i>
                         <p>
                             Stocks
