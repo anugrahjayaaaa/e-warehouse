@@ -64,7 +64,7 @@
                 <div class="card-body">
 
                     {{-- paginate and search --}}
-                    <div class="mb-3">
+                    <div class="mb-3 d-flex justify-content-between">
                         {{-- paginate --}}
                         <div class="col-2">
                             {{-- call livewire model get paginate number, add .live to make it instan change. make sure the name is same in controller --}}
@@ -77,7 +77,8 @@
                         </div>
                         {{-- search --}}
                         <div>
-
+                            {{-- call livewire model get user input, add .live to make it instan change. make sure the name is same in controller --}}
+                            <input wire:model.live="search" type="text" class="form-control" placeholder="Search...">
                         </div>
                     </div>
 

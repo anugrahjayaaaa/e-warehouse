@@ -9,14 +9,19 @@ use Livewire\WithPagination;
 class Index extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public $paginate = '10';
-    protected $paginationTheme = 'bootstrap';
+    public $search = '';
 
     public function render()
     {
         $users = [
-            'users' => User::orderBy('role', 'asc')->paginate($this->paginate)
+            'users' => User::where('name', 'like', '%' . $this->search . '%')
+                ->orWhere('email', 'like', '%' . $this->search . '%')
+                ->orWhere('role', 'like', '%' . $this->search . '%')
+                ->orderBy('role', 'asc')
+                ->paginate($this->paginate)
         ];
 
         return view('livewire.superadmin.user.index', $users);
