@@ -57,6 +57,8 @@ class Index extends Component
 
     public function edit($id)
     {
+        $this->resetValidation();
+
         $user = User::findOrFail($id);
 
         $this->name = $user->name;
@@ -64,8 +66,6 @@ class Index extends Component
         $this->role = $user->role;
 
         $this->user_id = $user->id; // set to help with update function
-
-        $this->resetValidation();
     }
 
     public function store()
@@ -83,7 +83,8 @@ class Index extends Component
         $this->dispatch('closeCreateModal');
     }
 
-    public function update($id){
+    public function update($id)
+    {
         $user = User::findOrFail($id);
         $this->user = $user;
 

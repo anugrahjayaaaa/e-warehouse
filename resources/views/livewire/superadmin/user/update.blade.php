@@ -99,8 +99,8 @@
                     Close
                 </button>
                 {{-- call update function in index.php --}}
-                <button wire:click="update({{ $user_id }})" type="button" class="btn btn-primary">
-                    <i class="fas fa-update mr-1"></i>
+                <button wire:click="update({{ $user_id }})" type="button" class="btn btn-warning">
+                    <i class="fas fa-edit mr-1"></i>
                     Update
                 </button>
             </div>
