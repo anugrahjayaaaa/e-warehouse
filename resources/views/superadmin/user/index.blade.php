@@ -1,8 +1,5 @@
 @extends('layouts.app')
 
-{{-- set title --}}
-@section('title', 'Users Data')
-
 {{-- set menu --}}
 @section('menu-superadmin-users', 'active')
 
@@ -10,6 +7,3 @@
     {{-- load from livewire folder--}}
     @livewire('superadmin.user.index')
 @endsection
-
-{{-- call livewire from views --}}
-{{-- @livewire("superadmin.user.index") --}}

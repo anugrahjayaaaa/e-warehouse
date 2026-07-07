@@ -8,7 +8,7 @@
                     <div class="col-sm-6">
                         <h1>
                             <i class="fas fa-user mr-2"></i>
-                            @yield('title')
+                            {{ $title }}
                         </h1>
                     </div>
                     <div class="col-sm-6">
@@ -19,7 +19,7 @@
                                     Dashboard
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active">@yield('title')</li>
+                            <li class="breadcrumb-item active">{{ $title }}</li>
                         </ol>
                     </div>
                 </div>

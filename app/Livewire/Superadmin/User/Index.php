@@ -16,7 +16,8 @@ class Index extends Component
 
     public function render()
     {
-        $users = [
+        $data = [
+            'title' => "Users Data",
             'users' => User::where('name', 'like', '%' . $this->search . '%')
                 ->orWhere('email', 'like', '%' . $this->search . '%')
                 ->orWhere('role', 'like', '%' . $this->search . '%')
@@ -24,6 +25,6 @@ class Index extends Component
                 ->paginate($this->paginate)
         ];
 
-        return view('livewire.superadmin.user.index', $users);
+        return view('livewire.superadmin.user.index', $data);
     }
 }
