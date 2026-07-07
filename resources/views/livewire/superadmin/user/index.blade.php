@@ -128,7 +128,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                        </table>ß
+                        </table>
 
                         {{-- pagination --}}
                         {{ $users->links() }}
