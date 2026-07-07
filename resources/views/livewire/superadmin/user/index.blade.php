@@ -139,6 +139,15 @@
 
         {{-- Create Modal --}}
         @include('livewire.superadmin.user.create')
+
+        {{-- Close Create Modal --}}
+        @script
+            <script>
+                $wire.on('closeCreateModal', () => {
+                    $('#createModal').modal('hide');
+                });
+            </script>
+        @endscript
     </div>
     <!-- /.content-wrapper -->
 </div>

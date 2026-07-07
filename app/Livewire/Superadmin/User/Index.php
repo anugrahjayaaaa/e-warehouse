@@ -60,7 +60,10 @@ class Index extends Component
         $user->email = $validatedData['email'];
         $user->role = $validatedData['role'];
         $user->password = Hash::make($validatedData['password']);
-        $user->save();
+        // $user->save();
+
+        // dispatch browser event to close modal
+        $this->dispatch('closeCreateModal');
     }
 
     // helper functions
