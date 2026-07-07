@@ -68,6 +68,19 @@ class Index extends Component
         $this->user_id = $user->id; // set to help with update function
     }
 
+    public function delete($id)
+    {
+        $user = User::findOrFail($id);
+
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->role = $user->role;
+
+        $this->user_id = $user->id; // set to help with destroy function
+    }
+
+    // CRUD functions
+
     public function store()
     {
         $validatedData = $this->validate($this->storeRules());
@@ -102,6 +115,15 @@ class Index extends Component
 
         // dispatch browser event to close modal
         $this->dispatch('closeEditModal');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        // dispatch browser event to close modal
+        $this->dispatch('closeDeleteModal');
     }
 
     // helper functions

@@ -119,7 +119,9 @@
                                                 data-target="#editModal">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <button class="btn btn-sm btn-danger">
+                                            <button wire:click="delete({{ $user->id }})"
+                                                class="btn btn-sm btn-danger" data-toggle="modal"
+                                                data-target="#deleteModal">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </td>
@@ -145,6 +147,9 @@
 
         {{-- Update Modal --}}
         @include('livewire.superadmin.user.edit')
+
+        {{-- Delete Modal --}}
+        @include('livewire.superadmin.user.delete')
 
         {{-- Close Modal --}}
         @script
@@ -174,6 +179,23 @@
                     Swal.fire({
                         title: 'User Updated',
                         text: 'The user has been updated successfully.',
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        },
+                        buttonsStyling: false
+                    });
+                });
+
+                // close delete modal
+                $wire.on('closeDeleteModal', () => {
+                    $('#deleteModal').modal('hide');
+
+                    // SweetAlert2
+                    Swal.fire({
+                        title: 'User Deleted',
+                        text: 'The user has been deleted successfully.',
                         icon: 'success',
                         confirmButtonText: 'OK',
                         customClass: {
