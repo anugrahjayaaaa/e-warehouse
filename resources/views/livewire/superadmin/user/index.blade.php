@@ -116,7 +116,7 @@
                                         <td>
                                             <button wire:click="edit({{ $user->id }})"
                                                 class="btn btn-sm btn-warning" data-toggle="modal"
-                                                data-target="#updateModal">
+                                                data-target="#editModal">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             <button class="btn btn-sm btn-danger">
@@ -144,7 +144,7 @@
         @include('livewire.superadmin.user.create')
 
         {{-- Update Modal --}}
-        @include('livewire.superadmin.user.update')
+        @include('livewire.superadmin.user.edit')
 
         {{-- Close Modal --}}
         @script
@@ -167,8 +167,8 @@
                 });
 
                 // close update modal
-                $wire.on('closeUpdateModal', () => {
-                    $('#updateModal').modal('hide');
+                $wire.on('closeEditModal', () => {
+                    $('#editModal').modal('hide');
 
                     // sweetalert2
                     Swal.fire({

@@ -101,7 +101,7 @@ class Index extends Component
         $user->save();
 
         // dispatch browser event to close modal
-        $this->dispatch('closeUpdateModal');
+        $this->dispatch('closeEditModal');
     }
 
     // helper functions
