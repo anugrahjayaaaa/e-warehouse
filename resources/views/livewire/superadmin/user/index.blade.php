@@ -35,7 +35,8 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             {{-- target modal use id --}}
-                            <button wire:click="create" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
+                            <button wire:click="create" class="btn btn-primary" data-toggle="modal"
+                                data-target="#createModal">
                                 <i class="fas fs-plus mr-1"></i>
                                 Add User
                             </button>
@@ -97,30 +98,30 @@
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-                                <tr>
-                                    <td>{{ $users->firstItem() + $loop->index }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        @if ($user->role == 'Super Admin')
-                                            <span class="badge badge-info">
-                                                {{ $user->role }}
-                                            </span>
-                                        @else
-                                            <span class="badge badge-primary">
-                                                {{ $user->role }}
-                                            </span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-sm btn-warning">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ $users->firstItem() + $loop->index }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>
+                                            @if ($user->role == 'Super Admin')
+                                                <span class="badge badge-info">
+                                                    {{ $user->role }}
+                                                </span>
+                                            @else
+                                                <span class="badge badge-primary">
+                                                    {{ $user->role }}
+                                                </span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -145,6 +146,18 @@
             <script>
                 $wire.on('closeCreateModal', () => {
                     $('#createModal').modal('hide');
+
+                    // sweetalert2
+                    Swal.fire({
+                        title: 'User Created',
+                        text: 'The new user has been added successfully.',
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        },
+                        buttonsStyling: false
+                    });
                 });
             </script>
         @endscript
