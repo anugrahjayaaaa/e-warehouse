@@ -23,6 +23,10 @@ class Index extends Component
     public $password = '';
     public $password_confirmation = '';
 
+    // helper
+    public $user_id = 0;
+    public $user;
+
     public function render()
     {
         $data = [
@@ -51,6 +55,19 @@ class Index extends Component
         $this->resetValidation();
     }
 
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->role = $user->role;
+
+        $this->user_id = $user->id; // set to help with update function
+
+        $this->resetValidation();
+    }
+
     public function store()
     {
         $validatedData = $this->validate($this->storeRules());
@@ -60,10 +77,30 @@ class Index extends Component
         $user->email = $validatedData['email'];
         $user->role = $validatedData['role'];
         $user->password = Hash::make($validatedData['password']);
-        // $user->save();
+        $user->save();
 
         // dispatch browser event to close modal
         $this->dispatch('closeCreateModal');
+    }
+
+    public function update($id){
+        $user = User::findOrFail($id);
+        $this->user = $user;
+
+        $validatedData = $this->validate($this->updateRole());
+
+        $user->name = $validatedData['name'] ?? $user->name;
+        $user->email = $validatedData['email'] ?? $user->email;
+        $user->role = $validatedData['role'] ?? $user->role;
+
+        if (!empty($validatedData['password'])) {
+            $user->password = Hash::make($validatedData['password']);
+        }
+
+        $user->save();
+
+        // dispatch browser event to close modal
+        $this->dispatch('closeUpdateModal');
     }
 
     // helper functions

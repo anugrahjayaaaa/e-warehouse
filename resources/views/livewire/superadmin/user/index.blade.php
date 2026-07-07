@@ -114,7 +114,9 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <button class="btn btn-sm btn-warning">
+                                            <button wire:click="edit({{ $user->id }})"
+                                                class="btn btn-sm btn-warning" data-toggle="modal"
+                                                data-target="#updateModal">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             <button class="btn btn-sm btn-danger">
@@ -124,7 +126,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                        </table>
+                        </table>ß
 
                         {{-- pagination --}}
                         {{ $users->links() }}
@@ -141,9 +143,13 @@
         {{-- Create Modal --}}
         @include('livewire.superadmin.user.create')
 
-        {{-- Close Create Modal --}}
+        {{-- Update Modal --}}
+        @include('livewire.superadmin.user.update')
+
+        {{-- Close Modal --}}
         @script
             <script>
+                // close create modal
                 $wire.on('closeCreateModal', () => {
                     $('#createModal').modal('hide');
 
@@ -159,8 +165,27 @@
                         buttonsStyling: false
                     });
                 });
+
+                // close update modal
+                $wire.on('closeUpdateModal', () => {
+                    $('#updateModal').modal('hide');
+
+                    // sweetalert2
+                    Swal.fire({
+                        title: 'User Updated',
+                        text: 'The user has been updated successfully.',
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        },
+                        buttonsStyling: false
+                    });
+                });
             </script>
         @endscript
+
+
     </div>
     <!-- /.content-wrapper -->
 </div>
