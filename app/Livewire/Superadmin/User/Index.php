@@ -4,10 +4,14 @@ namespace App\Livewire\Superadmin\User;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
+    use WithPagination;
+
     public $paginate = '10';
+    protected $paginationTheme = 'bootstrap';
 
     public function render()
     {
