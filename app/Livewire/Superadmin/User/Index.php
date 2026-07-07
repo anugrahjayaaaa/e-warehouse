@@ -3,6 +3,9 @@
 namespace App\Livewire\Superadmin\User;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,6 +16,12 @@ class Index extends Component
 
     public $paginate = '10';
     public $search = '';
+
+    public $name = '';
+    public $email = '';
+    public $role = '';
+    public $password = '';
+    public $password_confirmation = '';
 
     public function render()
     {
@@ -26,5 +35,65 @@ class Index extends Component
         ];
 
         return view('livewire.superadmin.user.index', $data);
+    }
+
+    public function create()
+    {
+        $this->reset(
+            [
+                'name',
+                'email',
+                'role',
+                'password',
+                'password_confirmation'
+            ]
+        );
+        $this->resetValidation();
+    }
+
+    public function store()
+    {
+        $validatedData = $this->validate($this->storeRules());
+
+        $user = new User();
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->role = $validatedData['role'];
+        $user->password = Hash::make($validatedData['password']);
+        $user->save();
+    }
+
+    // helper functions
+
+    public function storeRules(): array
+    {
+        return [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'role' => [
+                'required',
+                Rule::in(['Super Admin', 'Admin']),
+            ],
+            'password' => ['required', 'string', 'min:8'],
+            'password_confirmation' => ['required', 'same:password'],
+        ];
+    }
+
+    public function updateRole(): array
+    {
+        return [
+            'name' => ['sometimes', 'string', 'max:255'],
+            'email' => [
+                'sometimes',
+                'email',
+                Rule::unique('users')->ignore($this->user),
+            ],
+            'password' => [
+                'nullable',
+                'confirmed',
+                Password::defaults(),
+            ],
+            'password_confirmation' => ['sometimes', 'same:password'],
+        ];
     }
 }

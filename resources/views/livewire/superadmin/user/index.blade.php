@@ -34,7 +34,8 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <button class="btn btn-primary">
+                            {{-- target modal use id --}}
+                            <button wire:click="create" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
                                 <i class="fas fs-plus mr-1"></i>
                                 Add User
                             </button>
@@ -135,6 +136,9 @@
 
         </section>
         <!-- /.content -->
+
+        {{-- Create Modal --}}
+        @include('livewire.superadmin.user.create')
     </div>
     <!-- /.content-wrapper -->
 </div>
