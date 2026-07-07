@@ -62,6 +62,26 @@
                 </div>
 
                 <div class="card-body">
+
+                    {{-- paginate and search --}}
+                    <div class="mb-3">
+                        {{-- paginate --}}
+                        <div class="col-2">
+                            {{-- call livewire model get paginate number, add .live to make it instan change. make sure the name is same in controller --}}
+                            <select wire:model.live="paginate" class="form-control">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                        {{-- search --}}
+                        <div>
+
+                        </div>
+                    </div>
+
+                    {{-- users data table --}}
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
