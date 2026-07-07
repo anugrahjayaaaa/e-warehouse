@@ -131,7 +131,8 @@ class Index extends Component
             ],
             'password' => [
                 'nullable',
-                'confirmed',
+                'string',
+                'min:8',
                 Password::defaults(),
             ],
             'password_confirmation' => ['sometimes', 'same:password'],
